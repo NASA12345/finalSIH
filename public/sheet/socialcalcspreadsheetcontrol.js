@@ -245,7 +245,7 @@ SocialCalc.SpreadsheetControl = function() {
 
    this.tabnums.edit = this.tabs.length;
    this.tabs.push({name: "edit", text: "Edit", html:
-      ' <div id="%id.edittools" style="padding:10px 0px 0px 0px; display:flex; justify-content:center; gap:7px; height:25px">'+
+'<div id="%id.edittools" style="padding:10px 0px 0px 0px;">'+
 '&nbsp;<img id="%id.button_undo" src="%img.undo.gif" style="vertical-align:bottom;">'+
 ' <img id="%id.button_redo" src="%img.redo.gif" style="vertical-align:bottom;">'+
 ' &nbsp;<img src="%img.divider1.gif" style="vertical-align:bottom;">&nbsp; '+
@@ -288,7 +288,8 @@ SocialCalc.SpreadsheetControl = function() {
 
    this.tabnums.settings = this.tabs.length;
    this.tabs.push({name: "settings", text: "Format", html:
-      '<div id="%id.settingstools" style="display:none;">'+
+      '<div style="display:flex;justify-content:center">'+
+      '<div id="%id.settingstools" style="display:flex; gap:15px; text-align:center">'+
       ' <div id="%id.sheetsettingstoolbar" style="display:none;">'+
       '  <table cellspacing="0" cellpadding="0"><tr><td>'+
       '   <div style="%tbt.">%loc!SHEET SETTINGS!:</div>'+
@@ -298,7 +299,7 @@ SocialCalc.SpreadsheetControl = function() {
       '   <input type="button" value="%loc!Show Cell Settings!" onclick="SocialCalc.SpreadsheetControlSettingsSwitch(\'cell\');return false;">'+
       '   </td></tr></table>'+
       ' </div>'+
-      ' <div id="%id.cellsettingstoolbar" style="display:none;">'+
+      ' <div id="%id.cellsettingstoolbar" style="display:none;text-align:center">'+
       '  <table cellspacing="0" cellpadding="0"><tr><td>'+
       '   <div style="%tbt.">%loc!CELL SETTINGS!: <span id="%id.settingsecell">&nbsp;</span></div>'+
       '   </td></tr><tr><td>'+
@@ -307,6 +308,7 @@ SocialCalc.SpreadsheetControl = function() {
       '  <input type="button" value="%loc!Show Sheet Settings!" onclick="SocialCalc.SpreadsheetControlSettingsSwitch(\'sheet\');return false;">'+
       '  </td></tr></table>'+
       ' </div>'+
+      '</div>'+
       '</div>',
       view: "settings",
       onclick: function(s, t) {
@@ -664,7 +666,8 @@ SocialCalc.SpreadsheetControl = function() {
 
    this.tabnums.sort = this.tabs.length;
    this.tabs.push({name: "sort", text: "Sort", html:
-      ' <div id="%id.sorttools" style="display:none;">'+
+      '<div style="display:flex;justify-content:center">'+
+      ' <div id="%id.sorttools" style="display:none;text-align:center;">'+
       '  <table cellspacing="0" cellpadding="0"><tr>'+
       '   <td style="vertical-align:top;padding-right:4px;width:160px;">'+
       '    <div style="%tbt.">%loc!Set Cells To Sort!</div>'+
@@ -709,7 +712,8 @@ SocialCalc.SpreadsheetControl = function() {
       '    </tr></table>'+
       '   </td>'+
       '  </tr></table>'+
-      ' </div>',
+      ' </div>'+
+      '</div>',
       onclick: SocialCalc.SpreadsheetControlSortOnclick});
    this.editor.SettingsCallbacks.sort = {save: SocialCalc.SpreadsheetControlSortSave, load: SocialCalc.SpreadsheetControlSortLoad};
 
@@ -749,12 +753,14 @@ SocialCalc.SpreadsheetControl = function() {
 
    this.tabnums.comment = this.tabs.length;
    this.tabs.push({name: "comment", text: "Comment", html:
+      '<div style="display:flex;justify-content:center">'+
       '<div id="%id.commenttools" style="display:none;">'+
       '<table cellspacing="0" cellpadding="0"><tr><td>'+
-      '<textarea id="%id.commenttext" style="font-size:small;height:32px;width:600px;overflow:auto;" onfocus="%s.CmdGotFocus(this);"></textarea>'+
+      '<textarea id="%id.commenttext" style="border-radius: 10px; font-size:small;font-family:sans-serif; height:32px;width:600px;overflow:auto;" onfocus="%s.CmdGotFocus(this);"></textarea>'+
       '</td><td style="vertical-align:top;">'+
-      '&nbsp;<input type="button" value="%loc!Save!" onclick="%s.SpreadsheetControlCommentSet();" style="font-size:x-small;">'+
+      '&nbsp;<input type="button" value="%loc!Save!" onclick="%s.SpreadsheetControlCommentSet();" style=" background-color: rgb(192, 192, 192); margin-top:8px; margin-left:8px; font-size:medium;">'+
       '</td></tr></table>'+
+      '</div>'+
       '</div>',
       view: "sheet",
       onclick: SocialCalc.SpreadsheetControlCommentOnclick,
@@ -765,7 +771,8 @@ SocialCalc.SpreadsheetControl = function() {
 
    this.tabnums.names = this.tabs.length;
    this.tabs.push({name: "names", text: "Names", html:
-      '<div id="%id.namestools" style="display:none;">'+
+      '<div style="display:flex;justify-content:center">'+
+      '<div id="%id.namestools" style="display:none;text-align:center">'+
       '  <table cellspacing="0" cellpadding="0"><tr>'+
       '   <td style="vertical-align:top;padding-right:24px;">'+
       '    <div style="%tbt.">%loc!Existing Names!</div>'+
@@ -793,6 +800,7 @@ SocialCalc.SpreadsheetControl = function() {
       '    <input type="button" value="%loc!Delete!" onclick="%s.SpreadsheetControlNamesDelete()" style="font-size:x-small;">'+
       '   </td>'+
       '  </tr></table>'+
+      '</div>'+
       '</div>',
       view: "sheet",
       onclick: SocialCalc.SpreadsheetControlNamesOnclick,
@@ -803,7 +811,7 @@ SocialCalc.SpreadsheetControl = function() {
 
    this.tabnums.clipboard = this.tabs.length;
    this.tabs.push({name: "clipboard", text: "Clipboard", html:
-      '<div id="%id.clipboardtools" style="display:none;">'+
+      '<div id="%id.clipboardtools" style="display:none; ">'+
       '  <table cellspacing="0" cellpadding="0"><tr>'+
       '   <td style="vertical-align:top;padding-right:24px;">'+
       '    <div style="%tbt.">'+
@@ -818,17 +826,21 @@ SocialCalc.SpreadsheetControl = function() {
       });
       
    this.views["clipboard"] = {name: "clipboard", divStyle: "overflow:auto;", html:
-      ' <div style="font-size:x-small;padding:5px 0px 10px 0px;">'+
+      '<div style="font-size:medium; display:flex;flex-direction:column;align-items:center">'+
+      ' <div style="padding:5px 0px 10px 0px;">'+
       '  <b>%loc!Display Clipboard in!:</b>'+
       '  <input type="radio" id="%id.clipboardformat-tab" name="%id.clipboardformat" checked onclick="%s.SpreadsheetControlClipboardFormat(\'tab\');"> %loc!Tab-delimited format! &nbsp;'+
       '  <input type="radio" id="%id.clipboardformat-csv" name="%id.clipboardformat" onclick="%s.SpreadsheetControlClipboardFormat(\'csv\');"> %loc!CSV format! &nbsp;'+
       '  <input type="radio" id="%id.clipboardformat-scsave" name="%id.clipboardformat" onclick="%s.SpreadsheetControlClipboardFormat(\'scsave\');"> %loc!SocialCalc-save format!'+
       ' </div>'+
-      ' <input type="button" value="%loc!Load SocialCalc Clipboard With This!" style="font-size:x-small;" onclick="%s.SpreadsheetControlClipboardLoad();">&nbsp; '+
-      ' <input type="button" value="%loc!Clear SocialCalc Clipboard!" style="font-size:x-small;" onclick="%s.SpreadsheetControlClipboardClear();">&nbsp; '+
+      '<div style="margin-bottom:10px;">'+
+      ' <input type="button" value="%loc!Load SocialCalc Clipboard With This!" onclick="%s.SpreadsheetControlClipboardLoad();">&nbsp; '+
+      ' <input type="button" value="%loc!Clear SocialCalc Clipboard!" onclick="%s.SpreadsheetControlClipboardClear();">&nbsp; '+
       ' <br>'+
-      ' <textarea id="%id.clipboardtext" style="font-size:small;height:350px;width:800px;overflow:auto;" onfocus="%s.CmdGotFocus(this);"></textarea>'
-      };
+      '</div>'+
+      ' <textarea id="%id.clipboardtext" style="font-size:small;height:350px;width:800px;overflow:auto;" onfocus="%s.CmdGotFocus(this);"></textarea>'+
+      '</div>'
+   };
 
    return;
 
@@ -981,12 +993,12 @@ spreadsheet.Buttons = {
       SocialCalc.TooltipRegister(bele, SCLoc(spreadsheet.Buttons[button].tooltip), {});
       SocialCalc.ButtonRegister(bele,
          {normalstyle: "border:1px solid "+scc.ISCButtonBorderNormal+";backgroundColor:"+scc.ISCButtonBorderNormal+";",
-          hoverstyle: "border:1px solid "+scc.ISCButtonBorderHover+";backgroundColor:"+scc.ISCButtonBorderNormal+";",
-          downstyle: "border:1px solid "+scc.ISCButtonBorderDown+";backgroundColor:"+scc.ISCButtonDownBackground+";"}, 
+          hoverstyle: "border:1px solid"+scc.ISCButtonBorderHover+";backgroundColor:"+scc.ISCButtonBorderNormal+";",
+          downstyle: "border:1px solid"+scc.ISCButtonBorderDown+";backgroundColor:"+scc.ISCButtonDownBackground+";"}, 
          {MouseDown: SocialCalc.DoButtonCmd, command: spreadsheet.Buttons[button].command});
       }
 
-   // create formula ba
+   // create formula bar
    spreadsheet.formulabarDiv = document.createElement("div");
    spreadsheet.formulabarDiv.style.height = spreadsheet.formulabarheight + "px";
    spreadsheet.formulabarDiv.style="margin-bottom: 10px; display: flex; justify-content: center; align-items: center;"
@@ -1000,7 +1012,7 @@ spreadsheet.Buttons = {
       bele.src = spreadsheet.imagePrefix+spreadsheet.formulabuttons[button].image;
       bele.style.verticalAlign = "middle";
       bele.style.border = "1px solid #FFF";
-      bele.style.marginLeft = "14px";
+      bele.style="height: 20px; width: 30px; margin-left: 14px; cursor: pointer;"
       SocialCalc.TooltipRegister(bele, SCLoc(spreadsheet.formulabuttons[button].tooltip), {});
       SocialCalc.ButtonRegister(bele,
          {normalstyle: "border:1px solid #FFF;backgroundColor:#FFF;",
