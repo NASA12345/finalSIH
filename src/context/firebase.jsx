@@ -6,15 +6,16 @@ import { getDatabase,set,ref } from "firebase/database";
 import { getFirestore } from "firebase/firestore";
 const FireBaseContext=createContext(null);
 export const useFirebase=()=>useContext(FireBaseContext);
+import config from '../../config.js';
 const firebaseConfig = {
-  apiKey:"AIzaSyBjoaKnE6RmbNydFwfgIa94iuvghLJEIEU",
-  authDomain: "testing-b2fc7.firebaseapp.com",
-  projectId: "testing-b2fc7",
-  storageBucket: "testing-b2fc7.appspot.com",
-  messagingSenderId: "789805491019",
-  appId:"1:789805491019:web:29b7670577616d2d68bece",
-  measurementId:"G-EXS8NX6MMV",
-  databaseURL:"https://testing-b2fc7-default-rtdb.firebaseio.com"
+  apiKey:config.VITE_API_KEY,
+  authDomain:config.VITE_AUTH_DOMAIN,
+  projectId:config.VITE_PROJECT_ID,
+  storageBucket:config.VITE_STORAGE_BUCKET,
+  messagingSenderId:config.VITE_MESSAGING_SENDER_ID,
+  appId:config.VITE_APP_ID,
+  measurementId:config.VITE_MEASUREMENT_ID,
+  databaseURL:config.VITE_DATABASE_URL
 };
 
 

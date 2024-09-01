@@ -27,8 +27,7 @@ const Navbar = () => {
     };
     useEffect(() => {  
         onAuthStateChanged(auth,async (user) => {
-            if (user) {
-              console.log(user.email);  // user is logged in
+            if (user) { // user is logged in
               const docRef = doc(firestore, "User", user.email);
               const docSnap = await getDoc(docRef);
               if (docSnap.exists()) {

@@ -10,7 +10,6 @@ const SpreadSheet = () => {
   const [user, setUser] = React.useState(null);
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      console.log(user.email);  // user is logged in
       setUser(user);
     } else {
       navigate('/login');
